@@ -1,4 +1,8 @@
-﻿using Laboratorium2.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Laboratorium2.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Laboratorium2.Controllers
@@ -14,7 +18,12 @@ namespace Laboratorium2.Controllers
         {
             if (!model.isValid())
             {
-                return BadRequest();
+                return View("Error");
             }
             return View(model);
+        }
+
+        public IActionResult Form()
+        {
+            return View();
         }
