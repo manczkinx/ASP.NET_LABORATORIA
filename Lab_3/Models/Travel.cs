@@ -3,25 +3,46 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lab3.Models;
 
-public class Komputer
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
+
+public class Travel
 {
-    [HiddenInput]
-    public int id { get; set; }
-    // Nazwa,procesor,pamiec,karta graficzna, producent, data produkcji
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [HiddenInput(DisplayValue = false)]
+    public int Id { get; set; }
 
+    public string Nazwa { get; set; }
 
-    [Required(ErrorMessage = "Prosze podaæ nazwê komputera.")]
-    public string Name { get; set; }
+    [Display(Name = "Data RozpoczÄ™cia")]
+    public DateTime DataRozpoczecia { get; set; }
 
-    [Range(1, 128, ErrorMessage = "Wartoœæ {0} musi byæ pomiêdzy {1} a {2}.")]
-    public int Memo { get; set; }
+    [Display(Name = "Data ZakoÅ„czenia")]
+    public DateTime DataZakonczenia { get; set; }
 
-    [Required(ErrorMessage = "Musisz podaæ nazwê karty graficznej!")]
-    public string Graphic { get; set; }
+    [Display(Name = "Miejsce PoczÄ…tkowe")]
+    public string MiejscePoczatkowe { get; set; }
 
-    [Required(ErrorMessage = "Musisz podaæ nazwê producenta!")]
-    public string Producent { get; set; }
+    [Display(Name = "Miejsce KoÅ„cowe")]
+    public string MiejsceKoncowe { get; set; }
 
-    [DataType(DataType.DateTime)]
-    public DateTime Date { get; set; }
+    public virtual ICollection<Uczestnik> Uczestnicy { get; set; }
+
+    public virtual Przewodnik Przewodnik { get; set; }
 }
+
+public class Uczestnik
+{
+    // WÅ‚aÅ›ciwoÅ›ci uczestnika podrÃ³Å¼y
+    // ...
+}
+
+public class Przewodnik
+{
+    // WÅ‚aÅ›ciwoÅ›ci przewodnika
+    // ...
+}
+
