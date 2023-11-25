@@ -4,7 +4,7 @@ using Lab3.Models;
 
 namespace Lab3.Controllers;
 
-public class KomputerController : Controller
+public class TravelController : Controller
 {
     [HttpGet]
 
@@ -14,7 +14,7 @@ public class KomputerController : Controller
     }
 
     [HttpPost]
-    public ViewResult Create(Komputer komputer)
+    public ViewResult Create(Travel travel)
     {
         if (ModelState.IsValid)
         {
