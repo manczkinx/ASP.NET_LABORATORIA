@@ -22,7 +22,7 @@ public class TravelController : Controller
         }
         else
         {
-            return Viev();
+            return View();
         }
     }
 }
